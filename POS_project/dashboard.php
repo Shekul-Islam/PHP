@@ -28,6 +28,13 @@
                 </a>
             </li>
             <li>
+                <a href="category.php">
+                    <i class="fa fa-windows"></i>
+                    <span>Category</span>
+
+                </a>
+            </li>
+            <li>
                 <a href="add_product.php">
                     <i class="fa fa-windows"></i>
                     <span>Product</span>
