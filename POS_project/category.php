@@ -205,7 +205,7 @@
                             
 
                             <tr>
-                                <td>Category Brand : </td>
+                                <td>Category Name : </td>
                                 <td><input type="text" style="width:265px; height:30px;" name="code" ></td>
                             </tr>
                             <br><br>
