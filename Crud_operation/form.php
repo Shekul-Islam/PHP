@@ -10,18 +10,26 @@
 <body>
 
 <?php
-    $conn = mysqli_connect('localhost','root','','crud')
+    
 
-    if (isset($_POST['submit'])){
+    $conn = mysqli_connect ('localhost', 'root','','crud');
+
+    if(isset($_POST['submit'])){
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
 
-        "INSERT INTO user () VALUES ()";
+        $sql = "INSERT INTO userform (firstname, lastname, email)
+        values ('$firstname', '$lastname','$email')";
+
+        if(mysqli_query($conn, $sql) == TRUE ){
+            echo "Data Inserted";
+        } else {
+            echo "Not Inserted";
+        }
 
     }
-
-?>
+    ?>
     
     
 
