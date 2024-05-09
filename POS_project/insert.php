@@ -7,12 +7,14 @@
 <?php 
 $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_POST['submit'])){ 
-    $catname = $_POST['catname'];
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+     $manufac = $_POST['manufacturer_id'];
 
-     $sql = "INSERT INTO category(catname) VALUES ('$catname')";
+     $sql = "INSERT INTO product(name,price,manufacturer_id) VALUES ('$name','$price','$manufac')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
-        header('location:view_category.php');
+        header('location:view.php');
      }else{ 
         echo "not inserted";
      }
@@ -27,25 +29,26 @@ if (isset($_POST['submit'])){
 
     <div class="row">
 
-<h1 class="btn btn-secondary"> ADD Category</h1>
+<h1 class="btn btn-dark">PRODUCT ADD</h1>
 <center>
     <div class="row"> 
         <div class="col-sm-2"></div>
-        <div class="col-sm-8 pt-2 mt-4 border border-success"> 
+        <div class="col-sm-8 pt-2 mt-4 border border-success "> 
     
-            <form action="category.php" method="POST"  class= "bg-secondary text-white" > 
-               
-            <br>
-            Name:<br>
-                <input type ="text" name ="catname"><br><br>
-        
+            <form action="insert.php" method="POST" class= "bg-dark text-white" >
+            <br>  
+                Product Name:<br>
+                <input type ="text" name ="name"><br><br>
+                Price:<br>
+                <input type ="text" name ="price"><br><br>
+                manufacturer id:<br>
+                <input type ="text" name ="manufacturer_id"><br><br>
                 <input type ="submit" name ="submit" value="insert" class="btn btn-info">
-                <a href="view_category.php" class="btn btn-info">Viewresult</a>
-                <br><br>
-            
+                <a href="view.php" class="btn btn-info">Viewresult</a>
+                <br> <br>
             </form>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2 "></div>
     </div>
 
     </center>

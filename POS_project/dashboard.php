@@ -1,111 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<?php
+ session_start();
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  $sessioninfo = $_SESSION["sname"];
+if (empty($sessioninfo)){
+    header('location:index.php');
+}
+?>
 
-</head>
-<body>
-    <div class="sidebar">
-        <div class="logo"><img src="logo/logopic.png" alt=""></div>
-        <ul class="menu">
-            <li>
-                <a href="#">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-wpforms"></i>
-                    <span>Bill</span>
+<?php 
+    include("includes/header.php");
+    include("includes/sidebar.php");
+    include("includes/nav.php");
+?>
+  <main class="main-container">
 
-                </a>
-            </li>
-            <li>
-                <a href="category.php">
-                    <i class="fa fa-windows"></i>
-                    <span>Category</span>
-
-                </a>
-            </li>
-            <li>
-                <a href="add_product.php">
-                    <i class="fa fa-windows"></i>
-                    <span>Product</span>
-
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-cart-plus"></i>
-                    <span>Supplier</span>
-
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa fa-file-text"></i>
-                    <span>CRM</span>
-
-                </a>
-            </li> 
-            <li>
-                <a href="#">
-                    <i class="fa fa-edit"></i>
-                    <span>Report</span>
-
-                </a>
-            </li>
-            <li class="dropdown-container"><a href="#">
-                <i class="fa fa-user"></i>
-               <span> User Management</span>
-            </a>
-                <ul class="dropdown">
-                    <li><a href="#">Manage-group</a></li>
-                    <li><a href="#">Manage-users</a></li>
-                    
-                </ul>
-            </li>
-
-            
-
-            
-        </ul>
-    </div>
-
-    <div class="main--content">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <h2>POS</h2>
-                <h1>Dashboard</h1>
-            </div>
-
-           
-
-            <div class="user--info">
-                <button class="dropbtn"> 
-                <i class="fa fa-user"></i>
-                
-                    <i class="fa fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content">
-                    <a href="#"> <span>Profile</span>  </a>
-                    <a href="#"><span>Settings</span>  </a>
-                      <a href="index.php">  <span>Logout</span>  </a>
-                    
-                </div>
-            </div>
-
-        </div>
-
-        <main class="main-container">
             <div class="main-cards">
     
                 <div class="card">
@@ -159,12 +67,8 @@
                 </div>
 
             </div>
-    
-        </main>
-        
-
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.48.0/apexcharts.min.js"></script>
-   <script src="script.js"></script> 
-</body>
-</html>
+            </main>
+<?php 
+    include("includes/footer.php");
+   
+?>

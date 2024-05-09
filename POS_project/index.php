@@ -1,3 +1,30 @@
+<?php
+    session_start();
+
+$conn = new mysqli('localhost','root','','pos_project');
+
+if(isset($_POST["btnLogin"])){
+    $username = $_POST["txtUsername"];
+    $password = $_POST["txtPassword"];
+   
+
+    $dataselect = "SELECT * FROM user Where username='$username' and password='$password'";
+    $dataquery = mysqli_query($conn,$dataselect);
+   
+    
+    $dataarray = mysqli_fetch_assoc($dataquery);
+   
+    if($dataarray){
+        $_SESSION["sname"] = $username;
+        header("location:dashboard.php");
+    }else{
+        $msg="User or password is not correct !";
+    }
+}
+       
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,14 +92,16 @@
             border-radius: 5px;
         }
 
-        button {
+        #button {
             border: none;
             color: #fff;
-            font-size: 15px;
+            font-size: 18px;
             padding: 10px;
             cursor: pointer;
             font-weight: bold;
             border-radius: 5px;
+            float:right;
+            width:10rem;
             background: linear-gradient(to right, rgb(76, 0, 255), rgb(0, 217, 255));
         }
         button a{
@@ -100,18 +129,31 @@
     </div>
 
     <div class="container">
-        <h2>Login Form</h2>
-        <form action="" class="form">
-            <label for="userId"><span>Email or Phone</span></label>
-            <input type="text" name="username" id="userId">
+
+
+        <h2>Login Form</h2> 
+       
+
+           <p style=" color: red ";> 
+                 <?php
+                echo isset($msg)?$msg:"";
+                  ?>
+            </p>
+        <form action="#" method="post" class="form">
+       
+            <label for="userId"><span>User name</span></label>
+            <input type="text" name="txtUsername" id="userId">
             <label for="password"><span>Password</span></label>
-            <input type="password" name="password" id="password">
-           <button><a href="dashboard.php"> Login</a></button>
+            <input type="password" name="txtPassword" id="password">
+            <div>
+            <input type="submit" value="Login" name="btnLogin" id= "button" class= "btn btn-login bg-primary">
+        </div>
         </form>
         <p class="newUser">
             Not a member? <span>Signup now</span>
         </p>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
