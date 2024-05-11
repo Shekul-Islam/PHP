@@ -9,9 +9,9 @@ $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_GET['deleteid'])){ 
     $deleteid = $_GET['deleteid'];
 
-     $sql = "DELETE FROM category WHERE id = $deleteid";
+     $sql = "DELETE FROM sub_category WHERE id = $deleteid";
      if(mysqli_query($conn, $sql) == TRUE){ 
-        header('location:view_category.php');
+        header('location:view_subcategory.php');
      }
 }
 
@@ -34,27 +34,27 @@ if (isset($_GET['deleteid'])){
             <h3 class="text-center p-2 m-2 bg-dark text-white">Category Information</h3>
            
             <?php 
-            $sql = 'SELECT * FROM category';
+            $sql = 'SELECT * FROM sub_category';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
              <tr class='table-dark'>
                 <th>ID</th>
-                <th>CATEGORY NAME</th>
+                <th>SUBCATEGORY NAME</th>
                 <th>ACTION</th>
              </tr>";
            while ($data = mysqli_fetch_assoc($query)){ 
 
             $id = $data['id'];
-            $catname = $data['catname'];
+            $catname = $data['subcatname'];
 
             echo "<tr> 
                     <td>$id</td>
-                    <td>$catname</td>
+                    <td>$subcatname</td>
 
                     <td>
-                    <span class='btn btn-success'><a href='edit_category.php?id=$id'class='text-white text-decoration-none'>Edit</a></span>
-                    <span class='btn btn-danger'><a href='view_category.php?deleteid=$id'class='text-white text-decoration-none'>Delete</a></span>
+                    <span class='btn btn-success'><a href='edit_subcategory.php?id=$id'class='text-white text-decoration-none'>Edit</a></span>
+                    <span class='btn btn-danger'><a href='view_subcategory.php?deleteid=$id'class='text-white text-decoration-none'>Delete</a></span>
                     </td>
                 </tr>";
            }

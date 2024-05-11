@@ -8,22 +8,22 @@
 $conn = mysqli_connect('localhost','root','','pos_project');
 if  (isset($_GET['id'])){ 
     $getid = $_GET['id'];
-   $sql = "SELECT * FROM category WHERE id=$getid";
+   $sql = "SELECT * FROM sub_category WHERE id=$getid";
    $query = mysqli_query($conn, $sql);
    $data = mysqli_fetch_assoc($query);
    $id = $data['id'];
-   $catname = $data['catname'];
+   $subcatname = $data['subcatname'];
 }
 
 
 
 if(isset($_POST['edit'])) {
     $id = $_POST['id'];
-    $catname = $_POST['catname'];
+    $catname = $_POST['subcatname'];
     
- $sql1 = "UPDATE category SET catname='$catname' where id = '$id' ";
+ $sql1 = "UPDATE sub_category SET subcatname='$subcatname' where id = '$id' ";
  if(mysqli_query($conn, $sql1) == TRUE){ 
-    header('location:view_category.php');
+    header('location:view_subcategory.php');
     echo "DATA update";
  }else{ 
     echo $sqli1. "Data not update";
@@ -48,7 +48,7 @@ if(isset($_POST['edit'])) {
             
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
         cAT Name:<br>
-        <input type ="text" name ="catname" value="<?php echo $catname; ?>"><br><br>
+        <input type ="text" name ="subcatname" value="<?php echo $subcatname; ?>"><br><br>
         <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br><br>
         <input type ="submit" name ="edit" value="Edit" class="btn btn-info"><br><br>
     </form>

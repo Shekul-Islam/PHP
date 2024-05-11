@@ -7,12 +7,12 @@
 <?php 
 $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_POST['submit'])){ 
-    $catname = $_POST['catname'];
+    $subcatname = $_POST['subcatname'];
 
-     $sql = "INSERT INTO category(catname) VALUES ('$catname')";
+     $sql = "INSERT INTO sub_category(subcatname) VALUES ('$subcatname')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
-        header('location:view_category.php');
+        header('location:view_subcategory.php');
      }else{ 
         echo "not inserted";
      }
@@ -27,20 +27,20 @@ if (isset($_POST['submit'])){
 
     <div class="row">
 
-<h1 class="btn btn-secondary"> ADD CATEGORY</h1>
+<h1 class="btn btn-secondary"> ADD SUBCATEGORY</h1>
 <center>
     <div class="row"> 
         <div class="col-sm-2"></div>
         <div class="col-sm-8 pt-2 mt-4 border border-success"> 
     
-            <form action="category.php" method="POST"  class= "bg-secondary text-white" > 
+            <form action="subcategory.php" method="POST"  class= "bg-secondary text-white" > 
                
             <br>
-            Name:<br>
-                <input type ="text" name ="catname"><br><br>
+            Subcategory Name:<br>
+                <input type ="text" name ="subcatname"><br><br>
         
                 <input type ="submit" name ="submit" value="insert" class="btn btn-info">
-                <a href="view_category.php" class="btn btn-info">Viewresult</a>
+                <a href="view_subcategory.php" class="btn btn-info">Viewresult</a>
                 <br><br>
             
             </form>
