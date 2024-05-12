@@ -47,7 +47,7 @@ if(isset($_POST['edit'])) {
         <div class="col-sm-6 pt-4 mt-4 bg-dark text-white">
             
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
-        cAT Name:<br>
+        Category Name:<br>
         <input type ="text" name ="catname" value="<?php echo $catname; ?>"><br><br>
         <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br><br>
         <input type ="submit" name ="edit" value="Edit" class="btn btn-info"><br><br>
