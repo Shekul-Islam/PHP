@@ -26,12 +26,12 @@ if (isset($_GET['deleteid'])){
     <div class="row"> 
     <p>
      
-    <span class='btn btn-success'><a href='category.php' class='text-white text-decoration-none'>Add New Category</a></span>
+    <span class='btn btn-success'><a href='insert_subcategory.php' class='text-white text-decoration-none'>Add New Subcategory</a></span>
     </p>
         <div class="col-sm-1"></div>
         <div class="col-sm-10 pt-4 mt-4 border border-success bg-secondary text-white"> 
            
-            <h3 class="text-center p-2 m-2 bg-dark text-white">Category Information</h3>
+            <h3 class="text-center p-2 m-2 bg-dark text-white">subcategory Information</h3>
            
             <?php 
             $sql = 'SELECT * FROM sub_category';
@@ -46,7 +46,7 @@ if (isset($_GET['deleteid'])){
            while ($data = mysqli_fetch_assoc($query)){ 
 
             $id = $data['id'];
-            $catname = $data['subcatname'];
+            $subcatname = $data['subcatname'];
 
             echo "<tr> 
                     <td>$id</td>

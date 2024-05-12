@@ -19,7 +19,7 @@ if  (isset($_GET['id'])){
 
 if(isset($_POST['edit'])) {
     $id = $_POST['id'];
-    $catname = $_POST['subcatname'];
+    $subcatname = $_POST['subcatname'];
     
  $sql1 = "UPDATE sub_category SET subcatname='$subcatname' where id = '$id' ";
  if(mysqli_query($conn, $sql1) == TRUE){ 
@@ -47,7 +47,7 @@ if(isset($_POST['edit'])) {
         <div class="col-sm-6 pt-4 mt-4 bg-dark text-white">
             
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
-        cAT Name:<br>
+        Subcategory Name:<br>
         <input type ="text" name ="subcatname" value="<?php echo $subcatname; ?>"><br><br>
         <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br><br>
         <input type ="submit" name ="edit" value="Edit" class="btn btn-info"><br><br>

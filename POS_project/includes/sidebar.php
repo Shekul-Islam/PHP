@@ -26,7 +26,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="insert_subcategory.php">
                     <i class="fa fa-windows"></i>
                     <span>Sub-Category</span>
 

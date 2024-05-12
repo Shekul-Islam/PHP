@@ -33,7 +33,7 @@ if (isset($_POST['submit'])){
         <div class="col-sm-2"></div>
         <div class="col-sm-8 pt-2 mt-4 border border-success"> 
     
-            <form action="subcategory.php" method="POST"  class= "bg-secondary text-white" > 
+            <form action="insert_subcategory.php" method="POST"  class= "bg-secondary text-white" > 
                
             <br>
             Subcategory Name:<br>
