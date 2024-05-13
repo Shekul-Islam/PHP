@@ -31,15 +31,17 @@ if (isset($_GET['deleteid'])){
         <div class="col-sm-1"></div>
         <div class="col-sm-10 pt-4 mt-4 border border-success bg-secondary text-white"> 
            
-            <h3 class="text-center p-2 m-2 bg-dark text-white">subcategory Information</h3>
+            <h3 class="text-center p-2 m-2 bg-dark text-white">Subcategory Information</h3>
            
             <?php 
-            $sql = 'SELECT * FROM sub_category';
+            $sql = 'SELECT sub_category.id,sub_category.subcatname ,category.catname FROM sub_category,category where sub_category.cat_id = category.id ';
             
+
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
              <tr class='table-dark'>
                 <th>ID</th>
+                <th>CATEGORY NAME</th>
                 <th>SUBCATEGORY NAME</th>
                 <th>ACTION</th>
              </tr>";
@@ -47,9 +49,11 @@ if (isset($_GET['deleteid'])){
 
             $id = $data['id'];
             $subcatname = $data['subcatname'];
+            $cat_id = $data['catname'];
 
             echo "<tr> 
                     <td>$id</td>
+                    <td>$cat_id</td>
                     <td>$subcatname</td>
 
                     <td>
