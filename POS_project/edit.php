@@ -12,16 +12,16 @@ if ($_GET['id']){
    $query = mysqli_query($conn, $sql);
    $data = mysqli_fetch_assoc($query);
    $id = $data['id'];
-   $name = $data['name'];
+   $name = $data['pname'];
    $price = $data['price'];
    $manufac = $data['manufacturer_id'];
 }
      if (isset($_POST['edit'])) {
         $id = $_POST['id'];
-        $name = $_POST['name'];
+        $name = $_POST['pname'];
         $price = $_POST['price'];
          $manufac = $_POST['manufacturer_id'];
-     $sql1 = "UPDATE product SET name='$name',
+     $sql1 = "UPDATE product SET pname='$name',
                                 price='$price',
                                 manufacturer_id='$manufac' where id = '$id' ";
      if(mysqli_query($conn, $sql1) == TRUE){ 
@@ -51,7 +51,7 @@ if ($_GET['id']){
             
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" > 
         Name:<br>
-        <input type ="text" name ="name" value="<?php echo $name ?>"><br><br>
+        <input type ="text" name ="pname" value="<?php echo $name ?>"><br><br>
         Price:<br>
         <input type ="text" name ="price" value="<?php echo $price ?>"><br><br>
         manufacturer_id:<br>

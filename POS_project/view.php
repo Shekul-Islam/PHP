@@ -39,7 +39,7 @@ if (isset($_GET['deleteid'])){
             <h3 class="text-center p-2 m-2 bg-secondary text-white">Product Information</h3>
            
             <?php 
-            $sql = 'SELECT product.id,product.name,product.cat_id,product.sub_category_id,product.price,product.manufacturer_id,category.catname FROM sub_category,category where sub_category.cat_id = category.id  ';
+            $sql = 'SELECT product.id,product.pname,category.catname,sub_category.subcatname,product.cat_id,product.sub_category_id,product.price,product.manufacturer_id FROM category,sub_category,product where product.cat_id = category.id and product.sub_category_id = sub_category.id ';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
@@ -55,7 +55,7 @@ if (isset($_GET['deleteid'])){
            while ($data = mysqli_fetch_assoc($query)){ 
 
             $id = $data['id'];
-            $name = $data['name'];
+            $name = $data['pname'];
             $p_id = $data['cname'];
             $subcatname = $data['subcatname'];
             $price = $data['price'];
