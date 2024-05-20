@@ -7,13 +7,19 @@
 <?php 
 $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_POST['submit'])){ 
+
+    $product = $_FILES['image']['name'];
+    $temp =$_FILES['image']['temp_name'];
+    move_uploaded_file($temp,"image/$product");
+
+
     $name = $_POST['pname'];
     $p_id = $_POST['cname'];
     $subcatname = $_POST['subcatname'];
     $price = $_POST['price'];
     $manufac = $_POST['manufacturer_id'];
 
-     $sql = "INSERT INTO product(pname,cat_id,sub_category_id,price,manufacturer_id) VALUES ('$name','$p_id','$subcatname','$price','$manufac')";
+     $sql = "INSERT INTO product(image, pname,cat_id,sub_category_id,price,manufacturer_id) VALUES ('$product','$name','$p_id','$subcatname','$price','$manufac')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
         header('location:view.php');
@@ -39,6 +45,9 @@ if (isset($_POST['submit'])){
     
             <form action="insert_product.php" method="POST" class= "bg-dark text-white" >
             <br>  
+                <div>
+                    <img src="image.webp <?php echo $row["image"];?>" width="60" height="60" >
+                </div>
                 Product Name:<br>
                 <input type ="text" name ="pname"><br><br>
 
