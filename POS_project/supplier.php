@@ -6,7 +6,7 @@
 
 
 <?php
-include("insert.php");
+include("insert_product.php");
 ?>
 
 

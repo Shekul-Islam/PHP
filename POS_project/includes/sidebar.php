@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li>
-                <a href="insert.php">
+                <a href="insert_product.php">
                     <i class="fa fa-windows"></i>
                     <span>Product</span>
 

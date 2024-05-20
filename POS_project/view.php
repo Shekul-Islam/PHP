@@ -29,7 +29,7 @@ if (isset($_GET['deleteid'])){
     
          
 
-    <span class='btn btn-info'><a href='insert.php' class='text-white text-decoration-none'>Add New Product</a></span>
+    <span class='btn btn-info'><a href='insert_product.php' class='text-white text-decoration-none'>Add New Product</a></span>
     
        
     </p>
@@ -39,13 +39,15 @@ if (isset($_GET['deleteid'])){
             <h3 class="text-center p-2 m-2 bg-secondary text-white">Product Information</h3>
            
             <?php 
-            $sql = 'SELECT * FROM product';
+            $sql = 'SELECT product.id,product.name,product.cat_id,product.sub_category_id,product.price,product.manufacturer_id,category.catname FROM sub_category,category where sub_category.cat_id = category.id  ';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
              <tr class='table-dark'>
                 <th>ID</th>
                 <th>PRODUCT NAME</th>
+                <th>CATEGORY NAME</th>
+                <th>SUBCATEGORY NAME</th>
                 <th>PRICE</th>
                 <th>MANUFACTURER_ID</th>
                 <th>ACTION</th>
@@ -54,11 +56,15 @@ if (isset($_GET['deleteid'])){
 
             $id = $data['id'];
             $name = $data['name'];
+            $p_id = $data['cname'];
+            $subcatname = $data['subcatname'];
             $price = $data['price'];
             $manufac = $data['manufacturer_id'];
             echo "<tr> 
                     <td>$id</td>
                     <td>$name</td>
+                    <td>$p_id</td>
+                    <td>$subcatname</td>
                     <td>$price</td>
                     <td>$manufac</td>
                     <td>

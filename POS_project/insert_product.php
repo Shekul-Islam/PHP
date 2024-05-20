@@ -8,10 +8,12 @@
 $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_POST['submit'])){ 
     $name = $_POST['name'];
+    $p_id = $_POST['cname'];
+    $subcatname = $_POST['subcatname'];
     $price = $_POST['price'];
-     $manufac = $_POST['manufacturer_id'];
+    $manufac = $_POST['manufacturer_id'];
 
-     $sql = "INSERT INTO product(name,price,manufacturer_id) VALUES ('$name','$price','$manufac')";
+     $sql = "INSERT INTO product(name,cname,subcatname,price,manufacturer_id) VALUES ('$name','$p_id','$subcatname','$price','$manufac')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
         header('location:view.php');
@@ -35,10 +37,35 @@ if (isset($_POST['submit'])){
         <div class="col-sm-2"></div>
         <div class="col-sm-8 pt-2 mt-4 border border-success "> 
     
-            <form action="insert.php" method="POST" class= "bg-dark text-white" >
+            <form action="insert_product.php" method="POST" class= "bg-dark text-white" >
             <br>  
                 Product Name:<br>
                 <input type ="text" name ="name"><br><br>
+
+                <div>Category<br/>
+                    <select name="cname">
+                        <?php
+                            $role_table=$conn->query("select id,catname from category");
+                            while(list($id,$name)=$role_table->fetch_row()){
+                                echo "<option value='$id'>$name</option>";
+                                }
+                        
+                        ?>
+                    </select>
+                </div>
+
+                <div>Subcategory<br/>
+                    <select name="subcatname">
+                        <?php
+                            $role_table=$conn->query("select id,subcatname from sub_category");
+                            while(list($sid,$sname)=$role_table->fetch_row()){
+                                echo "<option value='$sid'>$sname</option>";
+                                }
+                        
+                        ?>
+                    </select>
+                </div>
+
                 Price:<br>
                 <input type ="text" name ="price"><br><br>
                 manufacturer id:<br>
