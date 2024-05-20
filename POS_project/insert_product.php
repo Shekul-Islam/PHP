@@ -13,7 +13,7 @@ if (isset($_POST['submit'])){
     $price = $_POST['price'];
     $manufac = $_POST['manufacturer_id'];
 
-     $sql = "INSERT INTO product(pname,cname,subcatname,price,manufacturer_id) VALUES ('$name','$p_id','$subcatname','$price','$manufac')";
+     $sql = "INSERT INTO product(pname,cat_id,sub_category_id,price,manufacturer_id) VALUES ('$name','$p_id','$subcatname','$price','$manufac')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
         header('location:view.php');

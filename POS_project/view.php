@@ -56,7 +56,7 @@ if (isset($_GET['deleteid'])){
 
             $id = $data['id'];
             $name = $data['pname'];
-            $p_id = $data['cname'];
+            $p_id = $data['catname'];
             $subcatname = $data['subcatname'];
             $price = $data['price'];
             $manufac = $data['manufacturer_id'];

@@ -48,7 +48,7 @@ if (isset($_POST['submit'])){
                     
                     ?>
                 </select>
-                </div>
+            </div>
             <div> 
             Subcategory Name:<br>
                 <input type ="text" name ="subcatname"><br><br>

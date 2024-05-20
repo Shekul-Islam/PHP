@@ -13,22 +13,28 @@ if ($_GET['id']){
    $data = mysqli_fetch_assoc($query);
    $id = $data['id'];
    $name = $data['pname'];
+   $p_id = $data['cat_id'];
+   $subcatname = $data['sub_category_id'];
    $price = $data['price'];
    $manufac = $data['manufacturer_id'];
 }
      if (isset($_POST['edit'])) {
         $id = $_POST['id'];
         $name = $_POST['pname'];
+        $p_id = $_POST['cat_id'];
+        $subcatname = $_POST['sub_category_id'];
         $price = $_POST['price'];
          $manufac = $_POST['manufacturer_id'];
      $sql1 = "UPDATE product SET pname='$name',
+                                cat_id = '$p_id',
+                                sub_category_id = '$subcatname',
                                 price='$price',
                                 manufacturer_id='$manufac' where id = '$id' ";
      if(mysqli_query($conn, $sql1) == TRUE){ 
         header('location:view.php');
         echo "DATA update";
      }else{ 
-        echo $sqli1. "Data not update";
+        echo $sqli. "Data not update";
      }
     }
     
@@ -52,6 +58,10 @@ if ($_GET['id']){
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" > 
         Name:<br>
         <input type ="text" name ="pname" value="<?php echo $name ?>"><br><br>
+        Category Name:<br>
+        <input type ="text" name ="catname" value="<?php echo $p_id ?>"><br><br>
+        Subcategory Name:<br>
+        <input type ="text" name ="subcatname" value="<?php echo $subcatname ?>"><br><br>
         Price:<br>
         <input type ="text" name ="price" value="<?php echo $price ?>"><br><br>
         manufacturer_id:<br>
