@@ -39,12 +39,13 @@ if (isset($_GET['deleteid'])){
             <h3 class="text-center p-2 m-2 bg-secondary text-white">Product Information</h3>
            
             <?php 
-            $sql = 'SELECT product.id,product.pname,category.catname,sub_category.subcatname,product.cat_id,product.sub_category_id,product.price,product.manufacturer_id FROM category,sub_category,product where product.cat_id = category.id and product.sub_category_id = sub_category.id ';
+            $sql = 'SELECT product.id,product.image,product.pname,category.catname,sub_category.subcatname,product.cat_id,product.sub_category_id,product.price,product.manufacturer_id FROM category,sub_category,product where product.cat_id = category.id and product.sub_category_id = sub_category.id ';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
              <tr class='table-dark'>
                 <th>ID</th>
+                <th>IMAGE</th>
                 <th>PRODUCT NAME</th>
                 <th>CATEGORY NAME</th>
                 <th>SUBCATEGORY NAME</th>
@@ -55,6 +56,7 @@ if (isset($_GET['deleteid'])){
            while ($data = mysqli_fetch_assoc($query)){ 
 
             $id = $data['id'];
+            $product = $data['image'];
             $name = $data['pname'];
             $p_id = $data['catname'];
             $subcatname = $data['subcatname'];
@@ -62,6 +64,7 @@ if (isset($_GET['deleteid'])){
             $manufac = $data['manufacturer_id'];
             echo "<tr> 
                     <td>$id</td>
+                    <td><img src='image/$product' width='60' height=60' ></td>
                     <td>$name</td>
                     <td>$p_id</td>
                     <td>$subcatname</td>

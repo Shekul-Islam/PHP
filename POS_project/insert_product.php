@@ -19,8 +19,8 @@ if (isset($_POST['submit'])){
     $price = $_POST['price'];
     $manufac = $_POST['manufacturer_id'];
 
-     $sql = "INSERT INTO product(image, pname,cat_id,sub_category_id,price,manufacturer_id) VALUES ('$product','$name','$p_id','$subcatname','$price','$manufac')";
-     if(mysqli_query($conn, $sql) == TRUE){ 
+     $sql = "INSERT INTO product(image,pname,cat_id,sub_category_id,price,manufacturer_id)VALUES ('$product','$name','$p_id','$subcatname','$price','$manufac')";
+     if(mysqli_query($conn, $sql) == TRUE){
         echo "DATA INSERTED";
         header('location:view.php');
      }else{ 
@@ -43,12 +43,12 @@ if (isset($_POST['submit'])){
         <div class="col-sm-2"></div>
         <div class="col-sm-8 pt-2 mt-4 border border-success "> 
     
-            <form action="insert_product.php" method="POST" class= "bg-dark text-white" >
+            <form action="insert_product.php" method="POST" class= "bg-dark text-white" enctype="multipart/form-data" >
             <br>  
-                <div>
-                    <img src="image.webp <?php echo $row["image"];?>" width="60" height="60" >
-                </div>
-                Product Name:<br>
+            <label for="image">Image</label>
+            <input type="file" accept="image" name="image" required> <br><br>
+                
+            Product Name:<br>
                 <input type ="text" name ="pname"><br><br>
 
                 <div>Category<br/>
