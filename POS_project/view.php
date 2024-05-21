@@ -64,7 +64,7 @@ if (isset($_GET['deleteid'])){
             $manufac = $data['manufacturer_id'];
             echo "<tr> 
                     <td>$id</td>
-                    <td><img src='image/['image']' width='60' height='60' ></td>
+                    <td><img src='image/$product' width='60' height=60' ></td>
                     <td>$name</td>
                     <td>$p_id</td>
                     <td>$subcatname</td>
