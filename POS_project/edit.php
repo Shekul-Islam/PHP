@@ -8,10 +8,11 @@
 $conn = mysqli_connect('localhost','root','','pos_project');
 if ($_GET['id']){ 
     $getid = $_GET['id'];
-   $sql = "SELECT * FROM product WHERE id=$getid";
+   $sql = "SELECT id,image,pname,price,manufacturer_id,cat_id,sub_category_id FROM product WHERE id=$getid";
    $query = mysqli_query($conn, $sql);
    $data = mysqli_fetch_assoc($query);
    $id = $data['id'];
+   $product = $data['image'];
    $name = $data['pname'];
    $p_id = $data['cat_id'];
    $subcatname = $data['sub_category_id'];
@@ -20,13 +21,15 @@ if ($_GET['id']){
 }
      if (isset($_POST['edit'])) {
         $id = $_POST['id'];
+        $product = $_POST['image'];
         $name = $_POST['pname'];
-        $p_id = $_POST['cat_id'];
-        $subcatname = $_POST['sub_category_id'];
+        $p_id = $_POST['catname'];
+        $subcatname = $_POST['subcatname'];
         $price = $_POST['price'];
          $manufac = $_POST['manufacturer_id'];
      $sql1 = "UPDATE product SET pname='$name',
                                 cat_id = '$p_id',
+                                image = '$product',
                                 sub_category_id = '$subcatname',
                                 price='$price',
                                 manufacturer_id='$manufac' where id = '$id' ";
@@ -34,7 +37,7 @@ if ($_GET['id']){
         header('location:view.php');
         echo "DATA update";
      }else{ 
-        echo $sqli. "Data not update";
+        echo $sql1. "Data not update";
      }
     }
     
@@ -56,6 +59,9 @@ if ($_GET['id']){
         <div class="col-sm-6 pt-4 mt-4 border border-success bg-dark text-white ">
             
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" > 
+       
+        image:<br>
+        <input type ="file" name ="image" value="<?php echo $product ?>"><br><br>
         Name:<br>
         <input type ="text" name ="pname" value="<?php echo $name ?>"><br><br>
         Category Name:<br>
@@ -66,7 +72,6 @@ if ($_GET['id']){
         <input type ="text" name ="price" value="<?php echo $price ?>"><br><br>
         manufacturer_id:<br>
         <input type ="text" name ="manufacturer_id" value="<?php echo $manufac ?>"><br><br>
-        <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br>
         <input type ="submit" name ="edit" value="Edit" class="btn btn-info"><br><br>
     </form>
    
