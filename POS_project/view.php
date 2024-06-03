@@ -33,8 +33,8 @@ if (isset($_GET['deleteid'])){
     
        
     </p>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10 pt-4 mt-4 border border-success bg-dark text-white">
+       
+        <div class="col-sm-12 pt-4 mt-4 border border-success bg-dark text-white">
         
             <h3 class="text-center p-2 m-2 bg-secondary text-white">Product Information</h3>
            
@@ -64,7 +64,7 @@ if (isset($_GET['deleteid'])){
             $manufac = $data['manufacturer_id'];
             echo "<tr> 
                     <td>$id</td>
-                    <td><img src='image/$product' width='60' height=60' ></td>
+                    <td><img src='image/$product' width='60' height='60'></td>
                     <td>$name</td>
                     <td>$p_id</td>
                     <td>$subcatname</td>
@@ -78,15 +78,13 @@ if (isset($_GET['deleteid'])){
            }
             ?>
         </div>
-        <div class="col-sm-1"></div>
+        
        
   
     </div>
    </div>
-  
- 
- 
-  
+
    <?php 
     include("includes/footer.php");
+
 ?>

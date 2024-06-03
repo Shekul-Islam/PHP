@@ -6,11 +6,12 @@
 ?>
 <?php 
 $conn = mysqli_connect('localhost','root','','pos_project');
+
 if (isset($_POST['submit'])){ 
 
     $product = $_FILES['image']['name'];
-    $temp =$_FILES['image']['temp_name'];
-    move_uploaded_file($temp,"image/$product");
+    $temp = $_FILES['image']['tmp_name'];
+    $image_upload  = 'image/'.$product;
 
 
     $name = $_POST['pname'];
@@ -19,9 +20,12 @@ if (isset($_POST['submit'])){
     $price = $_POST['price'];
     $manufac = $_POST['manufacturer_id'];
 
-     $sql = "INSERT INTO product(image,pname,cat_id,sub_category_id,price,manufacturer_id)VALUES ('$product','$name','$p_id','$subcatname','$price','$manufac')";
+     $sql = "INSERT INTO product(image,pname,cat_id,sub_category_id,price,manufacturer_id)
+                VALUES('$product','$name','$p_id','$subcatname','$price','$manufac')";
+
      if(mysqli_query($conn, $sql) == TRUE){
         echo "DATA INSERTED";
+        move_uploaded_file($temp,"$image_upload");
         header('location:view.php');
      }else{ 
         echo "not inserted";
@@ -43,7 +47,7 @@ if (isset($_POST['submit'])){
         <div class="col-sm-2"></div>
         <div class="col-sm-8 pt-2 mt-4 border border-success "> 
     
-            <form action="insert_product.php" method="POST" class= "bg-dark text-white" enctype="multipart/form-data" >
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class= "bg-dark text-white" enctype="multipart/form-data" >
             <br>  
             <label for="image">Image</label>
             <input type="file" accept="image" name="image" required> <br><br>
@@ -54,7 +58,7 @@ if (isset($_POST['submit'])){
                 <div>Category<br/>
                     <select name="cname">
                         <?php
-                            $role_table=$conn->query("select id,catname from category");
+                            $role_table=$conn->query("SELECT id,catname FROM category");
                             while(list($id,$name)=$role_table->fetch_row()){
                                 echo "<option value='$id'>$name</option>";
                                 }
@@ -66,7 +70,7 @@ if (isset($_POST['submit'])){
                 <div>Subcategory<br/>
                     <select name="subcatname">
                         <?php
-                            $role_table=$conn->query("select id,subcatname from sub_category");
+                            $role_table=$conn->query("SELECT id,subcatname FROM sub_category");
                             while(list($sid,$sname)=$role_table->fetch_row()){
                                 echo "<option value='$sid'>$sname</option>";
                                 }
